@@ -17,26 +17,27 @@ int main()
 
 	std::string input;
 
-	std::cout << "Please enter your username: ";
-
-	std::cin >> input;
-
 	bool found_username = false;
-	for (int i = 0; i < sizeof(names); i++)
+	while (!found_username)
 	{
-		if (input == names[i]) {
-			found_username = true;
-			break;
+		std::cout << "Please enter your username: ";
+
+		std::cin >> input;
+
+		for (int i = 0; i < sizeof(names); i++)
+		{
+			if (input == names[i]) {
+				found_username = true;
+				break;
+			}
+		}
+
+		if (!found_username)
+		{
+			std::cout << "That username is not in the system.\n";
 		}
 	}
 
-	if (found_username)
-	{
-		std::cout << "Your username is in the system.";
-	}
-	else
-	{
-		std::cout << "Your username is not in the system.";
-	}
+	std::cout << "Your username is in the system.";
 
 }
