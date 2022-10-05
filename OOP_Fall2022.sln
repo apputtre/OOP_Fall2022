@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab2PrelabQ1_GuessingGame",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab2", "Lab2", "{CDA9B16E-AA7C-4624-BB0A-9F8F32DBEFD4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab2PrelabQ2_FindJoker", "Lab2PrelabQ2_FindJoker\Lab2PrelabQ2_FindJoker.vcxproj", "{72ECD53E-450F-445D-9D43-9C6B27266312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,14 @@ Global
 		{CFFFC544-6301-4CD7-AFD8-8E2A343262BD}.Release|x64.Build.0 = Release|x64
 		{CFFFC544-6301-4CD7-AFD8-8E2A343262BD}.Release|x86.ActiveCfg = Release|Win32
 		{CFFFC544-6301-4CD7-AFD8-8E2A343262BD}.Release|x86.Build.0 = Release|Win32
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Debug|x64.ActiveCfg = Debug|x64
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Debug|x64.Build.0 = Debug|x64
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Debug|x86.ActiveCfg = Debug|Win32
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Debug|x86.Build.0 = Debug|Win32
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Release|x64.ActiveCfg = Release|x64
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Release|x64.Build.0 = Release|x64
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Release|x86.ActiveCfg = Release|Win32
+		{72ECD53E-450F-445D-9D43-9C6B27266312}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1837D75A-E8B5-499C-9F32-819FF9BC22C1} = {CDA9B16E-AA7C-4624-BB0A-9F8F32DBEFD4}
 		{CFFFC544-6301-4CD7-AFD8-8E2A343262BD} = {CDA9B16E-AA7C-4624-BB0A-9F8F32DBEFD4}
+		{72ECD53E-450F-445D-9D43-9C6B27266312} = {CDA9B16E-AA7C-4624-BB0A-9F8F32DBEFD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C7C5D823-EDD2-45A4-BE27-BB183EFF7D9D}
