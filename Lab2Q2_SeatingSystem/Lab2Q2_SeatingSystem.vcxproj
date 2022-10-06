@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bb5ff8d5-526c-4da1-825d-ad189361c175}</ProjectGuid>
-    <RootNamespace>Grid</RootNamespace>
+    <ProjectGuid>{407a0713-7f13-4bef-bb0a-f6ea73dac31c}</ProjectGuid>
+    <RootNamespace>Lab2Q2SeatingSystem</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Lab2PrelabQ2_SoilQuality</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
