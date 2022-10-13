@@ -10,8 +10,11 @@ using std::string;
 
 int main()
 {
+
+	bool write = true;
+
 	int num_jokers = 0;
-	int joker_indices[255];
+	int joker_indices[256];
 
 	ifstream input_file("FindWord.txt");
 	if (input_file.fail())
@@ -37,17 +40,17 @@ int main()
 		int char_index = (int)input_file.tellg();
 
 		int i = 0;
-		while (input_file.get() == to_find[i])
+		while (!isspace(c = input_file.get()))
 		{
-			i++;
-			
-			if (i == to_find.size())
-			{
-				joker_indices[num_jokers++] = char_index;
+			if (c == to_find[i])
+				i++;
+			else
 				break;
-			}
-
 		}
+
+		if (i == to_find.size() && isspace(c))
+			joker_indices[num_jokers++] = char_index;
+
 	}
 
 	input_file.clear();
@@ -76,19 +79,22 @@ int main()
 	}
 
 	input_file.close();
-	ofstream output_file("FindWord.txt");
-	if (output_file.fail())
+	if (write)
 	{
-		std::cout << "Couldn't open file for output.\n";
-		return 1;
-	}
+		ofstream output_file("FindWord.txt");
+		if (output_file.fail())
+		{
+			std::cout << "Couldn't open file for output.\n";
+			return 1;
+		}
 
-	for (int i = 0; i < to_write.size(); i++)
-	{
-		output_file << to_write[i];
-	}
+		for (int i = 0; i < to_write.size(); i++)
+		{
+			output_file << to_write[i];
+		}
 
-	output_file.close();
+		output_file.close();
+	}
 
 	std::cout << "The number of jokers is: " << num_jokers << "\n";
 
