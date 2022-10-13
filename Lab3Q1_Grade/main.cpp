@@ -1,0 +1,74 @@
+#include <iostream>
+#include "gradeutils.h"
+
+using std::cout;
+using std::cin;
+
+int main()
+{
+
+	int grades[] = {8, 10, 8, 5, 7, 8, 9, 10, 6, 7};
+	int num_grades = sizeof(grades) / sizeof(grades[0]);
+
+	bool exit = false;
+	while (!exit)
+	{
+		std::cout << "\n";
+		std::cout << "1. Modify\n";
+		std::cout << "2. Grade\n";
+		std::cout << "3. Avg\n";
+		std::cout << "4. Show\n";
+		std::cout << "5. Exit\n";
+		std::cout << "\n";
+
+		int input = -1;
+		while (input == -1)
+		{
+
+			std::cout << "Please enter your selection: ";
+
+			cin >> input;
+			if (input < 1 || input > 5)
+			{
+				std::cout << "Please enter a number between 1 and 5.\n";
+				input = -1;
+
+			}
+		}
+
+		std::cout << "\n";
+
+		switch (input)
+		{
+		case 1:
+			int test_num, new_score;
+
+			std::cout << "Please enter which test you would like to modify: ";
+			cin >> test_num;
+			std::cout << "Please enter the new score: ";
+			cin >> new_score;
+			modify(grades, test_num - 1, new_score);
+			std::cout << "Test " << test_num << " is now " << new_score << ".\n";
+			break;
+		case 2:
+			std::cout << "The sum of the grades is " << sum_arr(grades, num_grades) << ".\n";
+			std::cout << "Grade: " << grade(grades, num_grades) << "\n";
+			break;
+		case 3:
+			std::cout << "This student's average is " << avg(grades, num_grades) << ".\n";
+			break;
+		case 4:
+			show(grades, num_grades);
+			std::cout << "\n";
+			break;
+		case 5:
+			exit = true;
+			break;
+		}
+
+	}
+
+	std::cout << "Goodbye...\n";
+
+	return 0;
+}
