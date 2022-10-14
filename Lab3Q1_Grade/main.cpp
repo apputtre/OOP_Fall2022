@@ -13,13 +13,14 @@ int main()
 	bool exit = false;
 	while (!exit)
 	{
-		std::cout << "\n";
-		std::cout << "1. Modify\n";
-		std::cout << "2. Grade\n";
-		std::cout << "3. Avg\n";
-		std::cout << "4. Show\n";
-		std::cout << "5. Exit\n";
-		std::cout << "\n";
+		cout << "\n";
+		cout << "1. Modify\n";
+		cout << "2. Grade\n";
+		cout << "3. Avg\n";
+		cout << "4. Show\n";
+		cout << "5. Sum >= 6\n";
+		cout << "6. Exit\n";
+		cout << "\n";
 
 		int input = -1;
 		while (input == -1)
@@ -28,9 +29,9 @@ int main()
 			std::cout << "Please enter your selection: ";
 
 			cin >> input;
-			if (input < 1 || input > 5)
+			if (input < 1 || input > 6)
 			{
-				std::cout << "Please enter a number between 1 and 5.\n";
+				std::cout << "Please enter a number between 1 and 6.\n";
 				input = -1;
 
 			}
@@ -62,6 +63,9 @@ int main()
 			std::cout << "\n";
 			break;
 		case 5:
+			cout << "The sum of scores >= 6 is " << sum_gteq6(grades, num_grades) << ".\n";
+			break;
+		case 6:
 			exit = true;
 			break;
 		}

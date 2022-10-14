@@ -14,26 +14,26 @@ int main()
 
 	while (input != -1)
 	{
-		std::cout << "Please enter the next score: ";
+		cout << "Please enter the next score: ";
 		cin >> input;
 
 		if(input != -1)
 		{
 			if (input < -1 || input > 100)
-				std::cout << "Please enter a score between 0 and 100.\n";
+				cout << "Please enter a score between 0 and 100.\n";
 			else
 			{
 				scores[num_scores++] = input;
-				std::cout << "The maximum score is " << max_test(scores, num_scores) << ".\n";
-				std::cout << "The minimum score is " << min_test(scores, num_scores) << ".\n";
-				std::cout << "The average score is " << avg_test(scores, num_scores) << ".\n";
+				cout << "The maximum score is " << max_test(scores, num_scores) << ".\n";
+				cout << "The minimum score is " << min_test(scores, num_scores) << ".\n";
+				cout << "The average score is " << avg_test(scores, num_scores) << ".\n";
 			}
 		}
 	}
 
-	std::cout << "You entered ";
+	cout << "You entered ";
 	for (int i = 0; i < num_scores; i++)
-		std::cout << scores[i] << " ";
+		cout << scores[i] << " ";
 
 	return 0;
 }

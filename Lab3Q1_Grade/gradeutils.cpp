@@ -44,3 +44,14 @@ int sum_arr(int arr[], int size)
 
 	return sum;
 }
+
+int sum_gteq6(int arr[], int size)
+{
+	int sum = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if(arr[i] >= 6)
+			sum += arr[i];
+	}
+	return sum;
+}
