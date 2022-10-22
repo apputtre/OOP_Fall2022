@@ -60,16 +60,25 @@ int main()
 			break;
 		case 2:
 		{
+			for (int i = 0; i < num_ingredients; i++)
+			{
+				search_word(grid, num_rows, num_cols, ingredient_list[i]);
+				std::cout << "\n";
+			}
+			break;
+		}
+		case 3:
+		{
 			string to_search;
 			std::cout << "Enter the ingredient: ";
 			cin >> to_search;
 			search_word(grid, num_rows, num_cols, to_search);
-			break;
 		}
-		case 3:
 			break;
 		}
 	}
+
+	std::cout << "Goodbye...";
 
 	return 0;
 }

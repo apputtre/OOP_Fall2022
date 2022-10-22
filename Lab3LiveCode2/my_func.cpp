@@ -5,7 +5,7 @@ int countr(char arr[], int len)
 	int count = 0;
 	for (int i = 0; i < len; i++)
 	{
-		if (arr[i] == 'R')
+		if (toupper(arr[i]) == 'R')
 			count++;
 	}
 	return count;
