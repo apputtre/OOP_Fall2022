@@ -15,7 +15,7 @@ int main()
 	cin >> input;
 	std::cout << "# of R's: " << countr((char*)input.c_str(), input.length()) << "\n\n";
 
-	string to_open = "../find_word.txt";
+	string to_open = "arr.txt";
 
 	ifstream input_file = ifstream(to_open);
 
