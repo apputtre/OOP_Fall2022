@@ -156,5 +156,5 @@ void Fighter::splash_poison(Fighter& opp)
 
 // destructor
 Fighter::~Fighter() {
-
+	
 }

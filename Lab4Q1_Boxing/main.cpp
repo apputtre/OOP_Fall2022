@@ -130,6 +130,8 @@ int main() {
 			exit = true;
 		}
 
+		cout << "\n";
+
 	}
 
 	return 0;
