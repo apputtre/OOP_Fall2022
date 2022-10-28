@@ -50,6 +50,9 @@ public:
 	void drink_potion();
 	void splash_poison(Fighter& opp);
 
+	// live code
+	void wizard_spell(Fighter& opp);
+
 	// destructor
 	~Fighter();
 };

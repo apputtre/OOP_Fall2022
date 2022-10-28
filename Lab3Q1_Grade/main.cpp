@@ -6,11 +6,13 @@ using std::cin;
 
 int main()
 {
-
+	// initialize the test scores
 	int grades[] = {8, 10, 8, 5, 7, 8, 9, 10, 6, 7};
+	// calculate the size of the array (should always be 10)
 	int num_grades = sizeof(grades) / sizeof(grades[0]);
 
 	bool exit = false;
+	// enter the main loop
 	while (!exit)
 	{
 		cout << "\n";
@@ -22,6 +24,7 @@ int main()
 		cout << "6. Exit\n";
 		cout << "\n";
 
+		// make sure user input is within expected bounds
 		int input = -1;
 		while (input == -1)
 		{

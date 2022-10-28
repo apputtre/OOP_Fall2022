@@ -154,6 +154,16 @@ void Fighter::splash_poison(Fighter& opp)
 	opp.health -= 35;
 }
 
+// live code
+void Fighter::wizard_spell(Fighter& opp)
+{
+	if (show_power() >= 45)
+	{
+		set_power(show_power() - 45);
+		opp.set_power(5);
+	}
+}
+
 // destructor
 Fighter::~Fighter() {
 	

@@ -11,7 +11,7 @@ int main()
 
 	price = 10;
 	rate = 0.1;
-	quantity = 1;
+	quantity = 2;
 
 	cout << "\nTotal cost: " << find_tax(price, rate, quantity);
 

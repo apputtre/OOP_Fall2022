@@ -15,6 +15,9 @@ void print_board(char grid[], int num_rows, int num_cols)
 
 void search_word(char grid[], int num_rows, int num_cols, string word)
 {
+
+	// since it's easier to pass 1d arrays to functions, this function operates on a linear array
+
 	std::cout << "Search: " << word << "\n";
 	std::cout << "word_len" << word.length() << "\n";
 
@@ -31,9 +34,9 @@ void search_word(char grid[], int num_rows, int num_cols, string word)
 				char_index++;
 			}
 
+			// if the index variable equals the length of the word, then every letter in the word was found
 			if (char_index == word.length())
 			{
-				// we found the word!
 				std::cout << "found at (" << row << ", " << col << ") from right to left.\n";
 				return;
 			}
@@ -47,9 +50,9 @@ void search_word(char grid[], int num_rows, int num_cols, string word)
 				char_index++;
 			}
 
+			// if the index variable equals the length of the word, then every letter in the word was found
 			if (char_index == word.length())
 			{
-				// we found the word!
 				std::cout << "found at (" << row << ", " << col << ") from left to right.\n";
 				return;
 			}
@@ -63,12 +66,13 @@ void search_word(char grid[], int num_rows, int num_cols, string word)
 				char_index++;
 			}
 
+			// if the index variable equals the length of the word, then every letter in the word was found
 			if (char_index == word.length())
 			{
-				// we found the word!
 				std::cout << "found at (" << row << ", " << col << ") from down to up.\n";
 				return;
 			}
+
 			// check down
 			char_index = 0;
 			while (col + char_index < num_rows)
@@ -78,14 +82,35 @@ void search_word(char grid[], int num_rows, int num_cols, string word)
 				char_index++;
 			}
 
+			// if the index variable equals the length of the word, then every letter in the word was found
 			if (char_index == word.length())
 			{
-				// we found the word!
 				std::cout << "found at (" << row << ", " << col << ") from up to down.\n";
 				return;
 			}
 		}
 	}
 
+	// if the function didn't exit in the loops above, then the word wasn't found
 	std::cout << "not found\n";
+}
+
+int count_vowels(char grid[], int num_rows, int num_cols)
+{
+
+	string vowels = "AEIOU";
+	int num_vowels = 0;
+
+	for (int row = 0; row < num_rows; row++)
+	{
+		for (int col = 0; col < num_cols; col++)
+		{
+			if (num_rows - row <= 5)
+				for (char c : vowels)
+					if (c == toupper(grid[row * num_cols + col]))
+						num_vowels++;
+		}
+	}
+
+	return num_vowels;
 }

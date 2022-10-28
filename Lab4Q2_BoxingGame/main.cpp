@@ -66,11 +66,16 @@ int main() {
 			srand(time(NULL));
 
 			// generate number for cpu turn
-			int cpu_turn = (rand() % 4 + 1);
+			int cpu_turn = (rand() % 5 + 1);
 
 			// if the cpu guarded, apply the guard now
 			if (cpu_turn == 5)
 				player2.guard();
+
+			// if cpu chose wizard spell, check if it has enough power. if not, do jab instead
+			if (cpu_turn == 6)
+				if (!player2.show_power() >= 45)
+					cpu_turn = 1;
 
 			if (player1.show_power() >= 0) {
 				cout << player1.show_name() << " (Health: " << player1.show_health() << ", Power: " << player1.show_power() << ")\n";
@@ -81,10 +86,37 @@ int main() {
 				cout << "3 - hook (power -20)\n";
 				cout << "4 - uppercut (power -40)\n";
 				cout << "5 - guard\n";
+				cout << "6 - wizard spell\n";
 				cout << "Enter your selection: ";
 
 				// do user turn
-				cin >> num_input;
+				bool legal_input = false;
+				
+				while (!legal_input)
+				{
+					cin >> num_input;
+
+					legal_input = true;
+
+					if (num_input < 1 || num_input > 6)
+					{
+						legal_input = false;
+
+						cout << "Not a valid action. Please enter a number between 1 and 6.\n";
+						cout << "Enter your selection: ";
+					}
+					else if (num_input == 6)
+					{
+						if (!(player1.show_power() >= 45))
+						{
+							legal_input = false;
+
+							cout << "You need at least 45 power to use wizard spell.\n";
+							cout << "Enter your selection: ";
+						}
+					}
+				}
+
 				switch (num_input)
 				{
 				case 1:
@@ -106,6 +138,10 @@ int main() {
 				case 5:
 					user_move = "guard";
 					player1.guard();
+					break;
+				case 6:
+					user_move = "wizard spell";
+					player1.wizard_spell(player2);
 					break;
 				default:
 					cout << "unrecognized input";
@@ -142,6 +178,9 @@ int main() {
 					cpu_move = "guard";
 					// cpu already guarded
 					break;
+				case 6:
+					cpu_move = "wizard spell";
+					player2.wizard_spell(player1);
 				default:
 					cout << "unrecognized input";
 					return 1;

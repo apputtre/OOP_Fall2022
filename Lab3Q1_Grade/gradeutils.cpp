@@ -45,6 +45,7 @@ int sum_arr(int arr[], int size)
 	return sum;
 }
 
+// find the sum of the scores which are greater than or equal to 6
 int sum_gteq6(int arr[], int size)
 {
 	int sum = 0;

@@ -11,10 +11,12 @@ using std::string;
 int main()
 {
 
+	// these parameters need to be constant so we can declare arrays which use them as dimensions
 	const int num_rows = 10;
 	const int num_cols = 10;
 	const int num_ingredients = 8;
 
+	// the list of ingredients being searched for
 	string ingredient_list[] = {
 		"GARLIC",
 		"SPINACH",
@@ -26,6 +28,7 @@ int main()
 		"MILK"
 	};
 
+	// it's easier to work with 1d arrays, so we'll read the grid in as such
 	char grid[num_rows * num_cols] = {};
 
 	ifstream input_file = ifstream("ingredient.txt");
@@ -36,8 +39,8 @@ int main()
 		return 1;
 	}
 	
-	// load the file into an array
 	int index = 0;
+	// this loop reads the contents of the file into the array
 	while (input_file >> grid[index++]) {}
 
 	input_file.close();
@@ -49,6 +52,7 @@ int main()
 		cout << "1) Print board game\n";
 		cout << "2) Check brother ingredient\n";
 		cout << "3) Find an ingredient\n";
+		cout << "4) Count vowels\n";
 		cout << "0) Exit\n";
 
 		cin >> user_input;
@@ -74,6 +78,9 @@ int main()
 			cin >> to_search;
 			search_word(grid, num_rows, num_cols, to_search);
 		}
+		case 4:
+			std::cout << "# of vowels in bottom 5 rows: " << count_vowels(grid, num_rows, num_cols);
+			std::cout << "\n";
 			break;
 		}
 	}
