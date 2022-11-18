@@ -17,8 +17,7 @@ int main()
 	for (int i = 0; i++ < 5; queue.emplace_back(names[rand() % num_names])) {}
 
 	// display the queue
-	cout << "The starting queue:\n";
-	for (int i = 0; ++i < queue.size(); cout << queue[i - 1].getName() + " ") {}
+	cout << "The starting queue:\n"; for (int i = 0; ++i < queue.size(); cout << queue[i - 1].getName() + " ") {}
 
 	bool exit = false;
 
@@ -60,8 +59,6 @@ int main()
 		}
 
 	}
-
-
 
 	return 0;
 }
