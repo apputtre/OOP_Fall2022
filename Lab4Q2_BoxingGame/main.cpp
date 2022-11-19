@@ -18,11 +18,15 @@ int main() {
 	cin >> str_input;
 	cout << str_input << ", prepare to enter a world of pain\n\n";
 
+	// set the level counter
 	int level = 0;
+	// initialize the player
 	Fighter player1(str_input, 100, 100);
 	
+	// if level >= 3, the loop exits and the program ends
 	while(level < 3)
 	{
+		// depending on the level, initialize the correct opponent
 		Fighter player2;
 
 		switch (level)
@@ -68,7 +72,7 @@ int main() {
 			// generate number for cpu turn
 			int cpu_turn = (rand() % 5 + 1);
 
-			// if the cpu guarded, apply the guard now
+			// if the cpu guarded, apply the guard now so damage & power calculations are correct
 			if (cpu_turn == 5)
 				player2.guard();
 
@@ -148,6 +152,7 @@ int main() {
 					return 1;
 				}
 			}
+			// if the player doesn't have enough power, skip his turn
 			else {
 				cout << "Count!! (you are skipped this turn)\n";
 				player1.set_power(player1.show_power() + 20);
@@ -186,6 +191,7 @@ int main() {
 					return 1;
 				}
 			}
+			// if the cpu doesn't have enough power, skip it's turn
 			else {
 				cout << player2.show_name() << "'s turn is skipped\n";
 				player2.set_power(player2.show_power() + 20);
@@ -196,22 +202,28 @@ int main() {
 			cout << player1.show_name() << " " << user_move << "\n";
 			cout << player2.show_name() << " " << cpu_move << "\n";
 
+			// make sure that the players' guards expire and that their stats are within legal bounds
 			player1.set_guard(false);
 			player1.normalize_stats();
 			player2.set_guard(false);
 			player2.normalize_stats();
 
+			// if the player has no health left, the cpu wins
 			if (player1.show_health() <= 0)
 			{
 				cout << "You have lost!\n";
 				return 0;
 			}
+			// if the cpu has no health left, the player wins
 			if (player2.show_health() <= 0)
 			{
 				cout << "You have won!\n";
+				// destroy the cpu player
 				player2.~player2();
+				// restore the player's stats	
 				player1.set_health(player1.show_max_health());
 				player1.set_power(player1.show_max_power());
+				// increment the level counter
 				level++;
 				exit = true;
 			}
@@ -224,6 +236,7 @@ int main() {
 
 	cout << "The game has ended.";
 
+	// destroy the player
 	player1.~player1();
 
 	return 0;

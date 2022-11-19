@@ -1,6 +1,6 @@
 #include "Fighter.h"
 
-//constructor
+// default constructor
 Fighter::Fighter() {
 	name = "Tedi";
 	health = 100;
@@ -24,8 +24,6 @@ Fighter::Fighter(string in_name, int in_health, int in_power) {
 	health = in_health;
 	power = in_power;
 }
-
-// method
 
 void Fighter::set_name(string new_name) {
 	name = new_name;
@@ -73,10 +71,12 @@ int Fighter::show_max_power()
 }
 
 void Fighter::jab(Fighter& opp) {
+	// if the opponent is guarding, then he should lose some power
 	if (opp.show_guard()) {
 		opp.health -= 10;
 		opp.power -= 5;
 	}
+	// otherwise, he just loses the health
 	else {
 		opp.health -= 10;
 	}
@@ -119,6 +119,7 @@ void Fighter::uppercut(Fighter& opp) {
 	power -= 40;
 }
 
+// if the fighter guards, he should recover some health and power
 void Fighter::guard() {
 	set_guard(true);
 
@@ -136,6 +137,7 @@ bool Fighter::show_guard()
 	return is_guarding;
 }
 
+// make sure health isn't above max_health and power isn't above max_power
 void Fighter::normalize_stats()
 {
 	if (show_health() > show_max_health())
