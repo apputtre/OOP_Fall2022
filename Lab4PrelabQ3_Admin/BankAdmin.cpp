@@ -2,19 +2,19 @@
 
 BankAdmin::BankAdmin() {}
 
-void BankAdmin::setName(Account* acc, string name)
+void BankAdmin::setName(Account& acc, string name)
 {
-	acc->name = name;
+	acc.name = name;
 }
 
-float BankAdmin::interest(Account* acc, float amount)
+float BankAdmin::interest(Account& acc, float amount)
 {
-	acc->balance += amount;
-	return acc->getBalance();
+	acc.balance += amount;
+	return acc.getBalance();
 }
 
-float BankAdmin::changeBalance(Account* acc, float balance)
+float BankAdmin::changeBalance(Account& acc, float balance)
 {
-	acc->balance = balance;
-	return acc->getBalance();
+	acc.balance = balance;
+	return acc.getBalance();
 }

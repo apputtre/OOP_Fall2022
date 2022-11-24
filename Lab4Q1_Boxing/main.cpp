@@ -13,16 +13,19 @@ int main() {
 	string str_input;
 	int num_input;
 
+	// get the player's name
 	cout << "Welcome to the boxing game!\n";
 	cout << "Please enter your name: ";
 	cin >> str_input;
 	cout << str_input << ", prepare to enter a world of pain\n\n";
 
+	// initialize the player and the opponent
 	Fighter player1(str_input, 150, 100);
 	Fighter player2("Jade", 150, 100);
 
 	string user_move, cpu_move;
 	bool exit = false;
+	// begin the match
 	while (!exit) {
 
 		srand(time(NULL));
@@ -30,10 +33,11 @@ int main() {
 		// generate number for cpu turn
 		int cpu_turn = (rand() % 4 + 1);
 
-		// if the cpu guarded, apply the guard now
+		// if the cpu guarded, apply the guard now so damage & power calculations are correct
 		if (cpu_turn == 5)
 			player2.guard();
 
+		// if the player has enough power to act, then get the player's turn
 		if (player1.show_power() >= 0) {
 			cout << player1.show_name() << "(Health: " << player1.show_health() << ", Power: " << player1.show_power() << ")\n";
 			cout << player2.show_name() << "(Health: " << player2.show_health() << ", Power: " << player2.show_power() << ")\n";
@@ -70,19 +74,22 @@ int main() {
 				player1.guard();
 				break;
 			default:
+				// if the user entered an invalid number, the program exits
 				cout << "unrecognized input";
 				return 1;
 			}
 		}
+		// if the player doesn't have enough power, skip the player's turn
 		else {
 			cout << "Count!! (you are skipped this turn)\n";
+			// give the player some power to use next turn
 			player1.set_power(player1.show_power() + 20);
 			user_move = "skip";
 		}
 
+		// if the cpu has enough power to act, do it's turn
 		if (player2.show_power() >= 0)
 		{
-			// do the cpu turn
 			switch (cpu_turn) {
 			case 1:
 				cpu_move = "jab";
@@ -109,6 +116,7 @@ int main() {
 				return 1;
 			}
 		}
+		// if the cpu doesn't have enough power, then skip it's turn
 		else {
 			cout << player2.show_name() << "'s turn is skipped\n";
 			player2.set_power(player2.show_power() + 20);
@@ -116,14 +124,17 @@ int main() {
 		}
 		
 
+		// print out the moves
 		cout << player1.show_name() << " " << user_move << "\n";
 		cout << player2.show_name() << " " << cpu_move << "\n";
 
+		// if the player has no health left, then the cpu won
 		if (player1.show_health() <= 0)
 		{
 			cout << player2.show_name() << " has won!\n";
 			exit = true;
 		}
+		// if the cpu has no health left, then the player won
 		if (player2.show_health() <= 0)
 		{
 			cout << player1.show_name() << " has won!\n";
