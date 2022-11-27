@@ -10,8 +10,6 @@ Customer::Customer(string name)
 {
 	this->name = name;
 
-	srand(time(NULL));
-
 	money = (float) (10 + rand() % 21);
 
 }
@@ -47,8 +45,6 @@ void Customer::setMoney(int val)
 
 int Customer::spendMoney()
 {
-	srand(time(NULL));
-
 	int money_spent = 1 + rand() % money;
 
 	money -= money_spent;

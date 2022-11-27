@@ -8,31 +8,35 @@ using std::list;
 using std::cin;
 using std::cout;
 
+// print all users in the list
 void print_list(list<Person>& l);
+// add a new user to the list
 void add_user(list<Person>& l);
-//https://cplusplus.com/doc/tutorial/pointers/
+// search for a user in the list
 void search_user(list<Person>& l);
+// remove a user from the list
 void remove_user(list<Person>& l);
+// convert a string to lowercase
 string string_tolower(string s);
 
 int main()
 {
+	// define the People instances which will populate the list
 	Person p1("House", "MD", "Pathology");
 	Person p2("Scully", "Special Agent", "FBI");
-	Person p3("Columbo", "Detective", "Criminal Investigaion");
+	Person p3("Columbo", "Detective", "Criminal Justice");
 	Person p4("Angell", "Professor", "Semetic Languages");
 	Person p5("Bilgewater", "Lievtenant Colonel", "Army");
 
 	// https://cplusplus.com/reference/list/list/
 	list<Person> l;
 
+	// add the users to the list
 	l.push_back(p1);
 	l.push_back(p2);
 	l.push_back(p3);
 	l.push_back(p4);
 	l.push_back(p5);
-
-	// https://cplusplus.com/reference/regex/regex/?kw=regex
 
 	bool exit = false;
 	while (!exit)
@@ -91,7 +95,7 @@ void add_user(list<Person>& l)
 {
 	string name, title, department;
 
-	// clear the whitespace characters from cin
+	// clear the whitespace characters from cin (otherwise this fails to get input)
 	std::getline(cin, name);
 
 	cout << "Please enter a name: ";
@@ -101,6 +105,7 @@ void add_user(list<Person>& l)
 	cout << "Please enter a department: ";
 	std::getline(cin, department);
 
+	// add a new user with the specified values
 	l.push_back(Person(name, title, department));
 }
 
@@ -115,9 +120,11 @@ void search_user(list<Person>& l)
 	getline(cin, user_input);
 	user_input = string_tolower(user_input);
 
+	// declare the function we're going to use to compare the users
 	string(*getfield)(Person p) = nullptr;
 
 	// https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=msvc-170
+	// use lambda expressions to define the function
 	if (user_input == "name")
 		getfield = [](Person p) {return p.getName(); };
 	else if (user_input == "title")
@@ -135,6 +142,7 @@ void search_user(list<Person>& l)
 
 	list<Person>::iterator it = l.begin();
 
+	// compare call the lambda expression on each user to compare against the input
 	while (it != l.end())
 		if (string_tolower(getfield(*it)) == user_input)
 			break;
@@ -164,6 +172,7 @@ void remove_user(list<Person>& l)
 	std::getline(cin, user_input);
 
 
+	// use a lambda expression to remove all users matching the specified name
 	l.remove_if(
 		[user_input](Person& p)
 		{

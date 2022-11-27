@@ -21,5 +21,6 @@ public:
 	string getDepartment() const;
 	void printOut() const;
 
+	// override comparison operator so we can search for Person instances in a list
 	bool operator==(const Person& rval);
 };
