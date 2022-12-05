@@ -139,6 +139,7 @@ void search_user(list<Person>& l)
 
 	cout << "Please enter which " << user_input << " to search for: ";
 	std::getline(cin, user_input);
+	user_input = string_tolower(user_input);
 
 	list<Person>::iterator it = l.begin();
 
